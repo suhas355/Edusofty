@@ -9,14 +9,9 @@
 ## be redirected to HTTPS, uncomment the line below:
 # request.requires_https()
 
-if not request.env.web2py_runtime_gae:
-    ## if NOT running on Google App Engine use SQLite or other DB
-    db = DAL('sqlite://storage.sqlite',pool_size=1,check_reserved=['all'])
-else:
-    ## connect to Google BigTable (optional 'google:datastore://namespace')
-    db = DAL('google:datastore+ndb')
-    ## store sessions and tickets there
-    session.connect(request, response, db=db)
+db = DAL('sqlite://edudb.sqlite')
+
+session.connect(request, response, db=db)
     ## or store session in Memcache, Redis, etc.
     ## from gluon.contrib.memdb import MEMDB
     ## from google.appengine.api.memcache import Client
@@ -47,8 +42,14 @@ auth = Auth(db)
 service = Service()
 plugins = PluginManager()
 
+auth.settings.extra_fields['auth_user']= [
+Field('is_stud','boolean'),
+Field('dob','date')
+]
+
+
 ## create all tables needed by auth if not custom tables
-auth.define_tables(username=False, signature=False)
+auth.define_tables(username=True, signature=False)
 
 ## configure email
 mail = auth.settings.mailer
@@ -60,6 +61,9 @@ mail.settings.login = 'username:password'
 auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
+
+#to redirect after successfull login
+auth.settings.login_next = URL('custom','home')
 
 ## if you need to use OpenID, Facebook, MySpace, Twitter, Linkedin, etc.
 ## register with janrain.com, write your domain:api_key in private/janrain.key
