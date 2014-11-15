@@ -36,7 +36,19 @@ div.error { background-color: red; color: white; padding: 3px; }
    <div id="page-top">
     <div id="page-bottom">
      <div>
-      
+      <div id="sidebar">
+       <h2>
+        {{=response.subtitle or '=response.subtitle'}}
+       </h2>
+       <ul>
+        <li>
+         Consectetuer adipiscing elit. Nam pede erat, porta eu, lobortis eget, tempus et, tellus. Etiam neque. Vivamus consequat lorem at nisl.
+        </li>
+        <li>
+         Nullam non wisi a sem semper eleifend. Donec mattis libero eget urna. Duis pretium velit ac mauris. Proin eu wisi suscipit nulla suscipit interdum.
+        </li>
+       </ul>
+      </div>
       <div id="content">
        <div class="flash">{{=response.flash or ''}}</div>
        {{include}}
