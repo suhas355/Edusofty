@@ -42,6 +42,10 @@ def _():
         (T('Tests'), False, URL('custom','tests')),
         (T('Statistics'), False, URL('custom','stats')
         )]  
+        if auth.user.is_stud == False:
+            response.menu += [
+            (T('Upload Test'),False,URL('custom','test'))
+            ]
     # useful links to internal and external resources
 
 def showMenu():
