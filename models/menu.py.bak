@@ -37,10 +37,10 @@ def _():
     app = request.application
     ctr = request.controller
     if auth.is_logged_in():
-        response.menu+= [
-        (T('Profile'), False, URL('custom','profile')),
-        (T('Tests'), False, URL('custom','tests')),
-        (T('Statistics'), False, URL('custom','stats')
+        response.menu+= [   
+        (T('Profile'), False, URL('custom','profile'),
+        T('Tests'), False, URL('custom','tests'),
+        T('Statistics'), False, URL('custom','stats')
         )]  
     # useful links to internal and external resources
 

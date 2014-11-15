@@ -1,60 +1,5 @@
-timestamp: 2014-11-15T20:54:46.866392
-CREATE TABLE auth_user(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    first_name CHAR(128),
-    last_name CHAR(128),
-    email CHAR(512),
-    password CHAR(512),
-    registration_key CHAR(512),
-    reset_password_key CHAR(512),
-    registration_id CHAR(512)
-);
-success!
-timestamp: 2014-11-15T20:54:47.018242
-CREATE TABLE auth_group(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    role CHAR(512),
-    description TEXT
-);
-success!
-timestamp: 2014-11-15T20:54:47.179500
-CREATE TABLE auth_membership(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
-    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
-);
-success!
-timestamp: 2014-11-15T20:54:47.339844
-CREATE TABLE auth_permission(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
-    name CHAR(512),
-    table_name CHAR(512),
-    record_id INTEGER
-);
-success!
-timestamp: 2014-11-15T20:54:47.518223
-CREATE TABLE auth_event(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    time_stamp TIMESTAMP,
-    client_ip CHAR(512),
-    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
-    origin CHAR(512),
-    description TEXT
-);
-success!
-timestamp: 2014-11-15T20:54:47.686418
-CREATE TABLE auth_cas(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
-    created_on TIMESTAMP,
-    service CHAR(512),
-    ticket CHAR(512),
-    renew CHAR(1)
-);
-success!
-timestamp: 2014-11-15T21:53:24.014268
-CREATE TABLE web2py_session_EduSofty(
+timestamp: 2014-11-16T00:41:42.632446
+CREATE TABLE web2py_session_Edusofty(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     locked CHAR(1),
     client_ip CHAR(64),
@@ -64,7 +9,7 @@ CREATE TABLE web2py_session_EduSofty(
     session_data BLOB
 );
 success!
-timestamp: 2014-11-15T21:53:24.145172
+timestamp: 2014-11-16T00:41:42.762096
 CREATE TABLE auth_user(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name CHAR(128),
@@ -74,24 +19,26 @@ CREATE TABLE auth_user(
     password CHAR(512),
     registration_key CHAR(512),
     reset_password_key CHAR(512),
-    registration_id CHAR(512)
+    registration_id CHAR(512),
+    is_stud CHAR(1),
+    dob DATE
 );
 success!
-timestamp: 2014-11-15T21:53:24.307101
+timestamp: 2014-11-16T00:41:42.876514
 CREATE TABLE auth_group(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role CHAR(512),
     description TEXT
 );
 success!
-timestamp: 2014-11-15T21:53:24.450078
+timestamp: 2014-11-16T00:41:43.005334
 CREATE TABLE auth_membership(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
 );
 success!
-timestamp: 2014-11-15T21:53:24.599751
+timestamp: 2014-11-16T00:41:43.128292
 CREATE TABLE auth_permission(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
@@ -100,7 +47,7 @@ CREATE TABLE auth_permission(
     record_id INTEGER
 );
 success!
-timestamp: 2014-11-15T21:53:24.833791
+timestamp: 2014-11-16T00:41:43.256586
 CREATE TABLE auth_event(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     time_stamp TIMESTAMP,
@@ -110,7 +57,7 @@ CREATE TABLE auth_event(
     description TEXT
 );
 success!
-timestamp: 2014-11-15T21:53:25.002189
+timestamp: 2014-11-16T00:41:43.366307
 CREATE TABLE auth_cas(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
@@ -119,13 +66,4 @@ CREATE TABLE auth_cas(
     ticket CHAR(512),
     renew CHAR(1)
 );
-success!
-timestamp: 2014-11-15T22:06:27.267232
-ALTER TABLE auth_user ADD dob DATE;
-timestamp: 2014-11-15T22:06:27.407456
-ALTER TABLE auth_user ADD is_stud CHAR(1) NOT NULL;
-timestamp: 2014-11-15T22:06:51.243763
-ALTER TABLE auth_user ADD is_stud CHAR(1) NOT NULL;
-timestamp: 2014-11-15T22:07:09.608026
-ALTER TABLE auth_user ADD is_stud CHAR(1);
 success!
