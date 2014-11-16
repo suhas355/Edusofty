@@ -48,12 +48,6 @@ def _():
             ]
     # useful links to internal and external resources
 
-def showMenu():
-    app = request.application
-    ctr = request.controller
-    response.menu += [
-    (T('Home1'), False, URL('custom', 'index'), [])
-    ]
 
 if DEVELOPMENT_MENU: _()
 

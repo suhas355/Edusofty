@@ -74,15 +74,41 @@ a {
 
 }
 
+#header h1{
+    background: white linear-gradient(left, rgb(0, 112, 0) 0%, rgba(0, 0, 112, 0) 50%,rgba(0, 112, 0, 0) 50%, rgb(0, 112, 0) 100%);
+    background: white -webkit-linear-gradient(left, rgb(0, 112, 0) 0%, rgba(0, 0, 112, 0) 50%,rgba(0, 112, 0, 0) 50%, rgb(0, 112, 0) 100%);
+    background: white -moz-linear-gradient(left, rgb(0, 112, 0) 0%, rgba(0, 0, 112, 0) 50%,rgba(0, 112, 0, 0) 50%, rgb(0, 112, 0) 100%);
+    background-size: 200% 100%;
+    transition: all 2s linear;
+    animation: progress 1s linear infinite;
+    -webkit-animation: progress 1s linear infinite;
+    -moz-animation: progress 1s linear infinite;
+    background-position:100%;
+}
+@keyframes progress
+{
+to {background-position: 30px 0;}
+}
+
+@-moz-keyframes progress
+{
+to {background-position: 30px 0;}
+}
+
+@-webkit-keyframes progress
+{
+to {background-position: 30px 0;}
+}
+
 /** Menu Style Starts Here */
 
 
 #menu {
-	width: 760px;
-	height: 43px;
+	width: 1000px;
+	height: 52px;
 	margin: 0 auto;
-	padding: 0 20px;
 	background: url(images/image01.jpg) no-repeat left top;
+    background-size: 1000px;
 }
 
 #menu ul {
@@ -99,7 +125,10 @@ a {
 	padding: 0 20px;
 	background: url(images/image06.gif) no-repeat right 50%;
 	text-decoration: none;
-	color: #FFFFFF;
+	font-family: Roman;
+    font-size: 16px;
+    font-weight: bolder;
+    color: #EEEEFF;
 }
 
 #menu a:hover {
@@ -112,7 +141,7 @@ a {
 /** Page Style Starts Here */
 
 #page {
-	width: 800px;
+	width: 1000px;
 	margin: 0 auto;
 	padding: 0;
 	background: url(images/image05.jpg) repeat-y;
@@ -172,11 +201,12 @@ a {
 /** Footer Style Starts Here */
 
 #footer {
-	width: 800px;
+	width: 1000px;
 	height: 43px;
 	margin: 0 auto;
 	padding: 0 0 20px 0;
 	background: url(images/image02.jpg) no-repeat left top;
+    background-size: 1000px;
 }
 
 #footer p {
@@ -190,5 +220,3 @@ a {
 #footer a {
 	color: #FFFFFF;
 }
-
-
