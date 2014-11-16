@@ -1,5 +1,5 @@
-timestamp: 2014-11-16T00:41:42.632446
-CREATE TABLE web2py_session_Edusofty(
+timestamp: 2014-11-16T10:35:05.526577
+CREATE TABLE web2py_session_EduSofty(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     locked CHAR(1),
     client_ip CHAR(64),
@@ -9,7 +9,7 @@ CREATE TABLE web2py_session_Edusofty(
     session_data BLOB
 );
 success!
-timestamp: 2014-11-16T00:41:42.762096
+timestamp: 2014-11-16T10:35:05.734130
 CREATE TABLE auth_user(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name CHAR(128),
@@ -24,21 +24,21 @@ CREATE TABLE auth_user(
     dob DATE
 );
 success!
-timestamp: 2014-11-16T00:41:42.876514
+timestamp: 2014-11-16T10:35:05.891174
 CREATE TABLE auth_group(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role CHAR(512),
     description TEXT
 );
 success!
-timestamp: 2014-11-16T00:41:43.005334
+timestamp: 2014-11-16T10:35:06.026471
 CREATE TABLE auth_membership(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
 );
 success!
-timestamp: 2014-11-16T00:41:43.128292
+timestamp: 2014-11-16T10:35:06.186535
 CREATE TABLE auth_permission(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
@@ -47,7 +47,7 @@ CREATE TABLE auth_permission(
     record_id INTEGER
 );
 success!
-timestamp: 2014-11-16T00:41:43.256586
+timestamp: 2014-11-16T10:35:06.374459
 CREATE TABLE auth_event(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     time_stamp TIMESTAMP,
@@ -57,7 +57,7 @@ CREATE TABLE auth_event(
     description TEXT
 );
 success!
-timestamp: 2014-11-16T00:41:43.366307
+timestamp: 2014-11-16T10:35:06.517070
 CREATE TABLE auth_cas(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
@@ -66,4 +66,20 @@ CREATE TABLE auth_cas(
     ticket CHAR(512),
     renew CHAR(1)
 );
+success!
+timestamp: 2014-11-16T11:07:29.320500
+CREATE TABLE test(
+    tid INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512) NOT NULL
+);
+success!
+timestamp: 2014-11-16T12:05:20.787750
+ALTER TABLE test ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
+timestamp: 2014-11-16T12:08:27.923437
+ALTER TABLE test ADD surname CHAR(512) NOT NULL;
+timestamp: 2014-11-16T12:08:56.188809
+ALTER TABLE test ADD surname CHAR(512) NOT NULL;
+timestamp: 2014-11-16T12:09:16.098372
+ALTER TABLE test ADD surname CHAR(512);
+success!
 success!

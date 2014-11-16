@@ -1,0 +1,6 @@
+{{extend 'layout.html'}}
+
+{{=FORM(str(T('import ')),INPUT(_type='file',_name='csvfile'),INPUT(_type='hidden',_value='dba.auth_user',_name='test'),INPUT(_type='submit',_value='import'))}}
+
+
+{{=BEAUTIFY(response._vars)}}

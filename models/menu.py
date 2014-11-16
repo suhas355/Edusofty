@@ -44,7 +44,7 @@ def _():
         )]  
         if auth.user.is_stud == False:
             response.menu += [
-            (T('Upload Test'),False,URL('custom','test'))
+            (T('Upload Test'),False,URL('custom','upload'))
             ]
     # useful links to internal and external resources
 

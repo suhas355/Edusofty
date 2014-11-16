@@ -11,6 +11,13 @@
 
 db = DAL('sqlite://edudb.sqlite')
 
+db.define_table('test',
+                Field('tid','id'),
+                Field('name','string',notnull = True),
+                Field('surname','string',notnull = True),
+                migrate=True
+                )
+
 session.connect(request, response, db=db)
     ## or store session in Memcache, Redis, etc.
     ## from gluon.contrib.memdb import MEMDB
