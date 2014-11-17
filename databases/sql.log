@@ -1,5 +1,5 @@
-timestamp: 2014-11-16T10:35:05.526577
-CREATE TABLE web2py_session_EduSofty(
+timestamp: 2014-11-16T18:32:38.666736
+CREATE TABLE web2py_session_Edusofty(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     locked CHAR(1),
     client_ip CHAR(64),
@@ -9,7 +9,7 @@ CREATE TABLE web2py_session_EduSofty(
     session_data BLOB
 );
 success!
-timestamp: 2014-11-16T10:35:05.734130
+timestamp: 2014-11-16T18:32:38.792568
 CREATE TABLE auth_user(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     first_name CHAR(128),
@@ -24,21 +24,21 @@ CREATE TABLE auth_user(
     dob DATE
 );
 success!
-timestamp: 2014-11-16T10:35:05.891174
+timestamp: 2014-11-16T18:32:38.937367
 CREATE TABLE auth_group(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role CHAR(512),
     description TEXT
 );
 success!
-timestamp: 2014-11-16T10:35:06.026471
+timestamp: 2014-11-16T18:32:39.052786
 CREATE TABLE auth_membership(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
 );
 success!
-timestamp: 2014-11-16T10:35:06.186535
+timestamp: 2014-11-16T18:32:39.176172
 CREATE TABLE auth_permission(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
@@ -47,7 +47,7 @@ CREATE TABLE auth_permission(
     record_id INTEGER
 );
 success!
-timestamp: 2014-11-16T10:35:06.374459
+timestamp: 2014-11-16T18:32:39.299658
 CREATE TABLE auth_event(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     time_stamp TIMESTAMP,
@@ -57,7 +57,7 @@ CREATE TABLE auth_event(
     description TEXT
 );
 success!
-timestamp: 2014-11-16T10:35:06.517070
+timestamp: 2014-11-16T18:32:39.433292
 CREATE TABLE auth_cas(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
@@ -67,19 +67,78 @@ CREATE TABLE auth_cas(
     renew CHAR(1)
 );
 success!
-timestamp: 2014-11-16T11:07:29.320500
-CREATE TABLE test(
-    tid INTEGER PRIMARY KEY AUTOINCREMENT,
-    name CHAR(512) NOT NULL
+timestamp: 2014-11-16T18:32:39.559909
+CREATE TABLE testmap(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    uid INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    tname CHAR(512),
+    score INTEGER NOT NULL DEFAULT 1,
+    negative DOUBLE,
+    category TEXT NOT NULL
 );
 success!
-timestamp: 2014-11-16T12:05:20.787750
-ALTER TABLE test ADD id INTEGER PRIMARY KEY AUTOINCREMENT;
-timestamp: 2014-11-16T12:08:27.923437
-ALTER TABLE test ADD surname CHAR(512) NOT NULL;
-timestamp: 2014-11-16T12:08:56.188809
-ALTER TABLE test ADD surname CHAR(512) NOT NULL;
-timestamp: 2014-11-16T12:09:16.098372
-ALTER TABLE test ADD surname CHAR(512);
+timestamp: 2014-11-16T18:32:39.686890
+CREATE TABLE question(
+    tid INTEGER REFERENCES testmap (id) ON DELETE CASCADE,
+    qno INTEGER NOT NULL,
+    ques CHAR(512),
+    opt_a CHAR(512),
+    opt_b CHAR(512),
+    opt_c CHAR(512),
+    opt_d CHAR(512),
+    answer CHAR(512),
+    PRIMARY KEY(tid, qno)) ;
+faked!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+timestamp: 2014-11-16T21:00:43.139007
+CREATE TABLE question(
+    tid INTEGER REFERENCES testmap (id) ON DELETE CASCADE,
+    qno INTEGER NOT NULL,
+    ques CHAR(512),
+    opt_a CHAR(512),
+    opt_b CHAR(512),
+    opt_c CHAR(512),
+    opt_d CHAR(512),
+    answer CHAR(512),
+    PRIMARY KEY(tid, qno)) ;
+success!
+success!
+success!
+success!
+success!
+success!
+success!
+success!
 success!
 success!

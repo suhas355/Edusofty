@@ -11,13 +11,6 @@
 
 db = DAL('sqlite://edudb.sqlite')
 
-db.define_table('test',
-                Field('tid','id'),
-                Field('name','string',notnull = True),
-                Field('surname','string',notnull = True),
-                migrate=True
-                )
-
 session.connect(request, response, db=db)
     ## or store session in Memcache, Redis, etc.
     ## from gluon.contrib.memdb import MEMDB
@@ -96,3 +89,26 @@ use_janrain(auth, filename='private/janrain.key')
 
 ## after defining tables, uncomment below to enable auditing
 # auth.enable_record_versioning(db)
+
+db.define_table('testmap',
+	Field('uid',db.auth_user,notnull=True),
+	Field('tname','string'),
+	Field('score','integer',notnull=True,default=1),
+	Field('negative','double',IS_FLOAT_IN_RANGE(0.0, 1.0)),
+    Field('category','list:string',notnull=True),
+    migrate=True
+	)
+
+db.testmap.category.requires=IS_IN_SET(('Aptitude','Verbal','OS','Database'))
+db.define_table('question',
+                Field('tid',db.testmap,notnull=True),
+                Field('qno','integer',notnull=True),
+                Field('ques','string'),
+                Field('opt_a','string'),
+                Field('opt_b','string'),
+                Field('opt_c','string'),
+                Field('opt_d','string'),
+                Field('answer','string'),
+                migrate=True,
+                primarykey=['tid','qno']
+                )
