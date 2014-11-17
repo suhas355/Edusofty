@@ -1,3 +1,28 @@
 {{extend 'layout.html'}}
-<h1>This is the custom/testStart.html template</h1>
-{{=BEAUTIFY(response._vars)}}
+<link rel="stylesheet" type="text/css" href="{{=URL('static','css/testlist.css')}}">
+<h1>{{=BEAUTIFY(response._vars['tname'])}}</h1>
+<div class="outerTest">
+	<form>
+		{{qcount=1}}
+		
+		{{for que in response._vars['ques']:}}
+		{{qlabel=que[0]
+		  question=que[1]
+		  optA=que[2]
+		  optB=que[3]
+		  optC=que[4]
+		  optD=que[5]
+		  ans=que[6]	
+		}}
+		{{divcontent= HR()+ LABEL(str(qcount)+'.') + B(LABEL(question))}}
+		{{divcontent = divcontent + BR() + LABEL('A.') + INPUT(_type='radio',_name=qlabel,_value=optA) + optA }}
+		{{divcontent = divcontent + BR() + LABEL('B.') + INPUT(_type='radio',_name=qlabel,_value=optB) + optB}}
+		{{divcontent = divcontent + BR() + LABEL('C.') + INPUT(_type='radio',_name=qlabel,_value=optC) + optC}}
+		{{divcontent = divcontent + BR() + LABEL('D.') + INPUT(_type='radio',_name=qlabel,_value=optD) + optD }}
+
+		{{=DIV(divcontent,_class='innerTest',_id=que[0])}}
+		{{qcount=qcount+1}}
+		{{pass}}
+		{{=INPUT(_type='submit',_name='submit',_id='testsubmit',_value='submit test')}}
+	</form>
+</div>	

@@ -103,10 +103,12 @@ def testpage():
 def testStart():
 	print request.args
 	rows=db(db.question.tid==request.args[0]).select()
+	tnamerow=db(db.testmap.id==request.args[0]).select(db.testmap.tname).first()
+	tname=tnamerow['tname']
 	ques=[]
 	for row in rows:
 		ques.append([row.qno,row.ques,row.opt_a,row.opt_b,row.opt_c,row.opt_d,row.answer])
 	#to do
 	#1. select 10 random question
-	return dict(tid=request.args[0],ques=ques)
+	return dict(tid=request.args[0],ques=ques,tname=tname)
 
