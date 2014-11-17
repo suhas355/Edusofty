@@ -13,7 +13,7 @@ Released for free under a Creative Commons Attribution-Share Alike 3.0 Philippin
 
 body {
 	margin: 0;
-	background: #393939;
+	background: url("images/bg.jpg");
 	line-height: 25px;
 	text-align: justify;
 	font-family: Tahoma, Arial, Helvetica, sans-serif;
@@ -63,18 +63,15 @@ a {
 	padding: 0;
 }
 
-#header h1 {
-	margin: 0;
-	padding: 40px 0 10px 55px;
+#header h1{
+	margin: 3pt;
+	padding: 30px 0 10px 55px;
 	background: url(images/logo.png) no-repeat left 90%;
 	background-size: 6%;
+	text-align: left;
 	font-size: 36px;
 	font-weight: normal;
 	color: #FFFFFF;
-
-}
-
-#header h1{
     background: white linear-gradient(left, rgb(0, 112, 0) 0%, rgba(0, 0, 112, 0) 50%,rgba(0, 112, 0, 0) 50%, rgb(0, 112, 0) 100%);
     background: white -webkit-linear-gradient(left, rgb(0, 112, 0) 0%, rgba(0, 0, 112, 0) 50%,rgba(0, 112, 0, 0) 50%, rgb(0, 112, 0) 100%);
     background: white -moz-linear-gradient(left, rgb(0, 112, 0) 0%, rgba(0, 0, 112, 0) 50%,rgba(0, 112, 0, 0) 50%, rgb(0, 112, 0) 100%);
@@ -86,6 +83,10 @@ a {
     background-position:100%;
     width: 200px;
     border-radius: 200px;
+    font-family: 'Monsieur La Doulaise',Georgia;
+    color: #0B6121;
+    font-weight: bolder;
+    font-size: 50px;
 }
 @keyframes progress
 {
@@ -161,7 +162,7 @@ to {background-position: 30px 0;}
 
 #content {
 	margin: auto;
-	width: 420px;
+	width: auto;
 	padding: 40px 50px 30px 60px;
 }
 
@@ -169,7 +170,7 @@ to {background-position: 30px 0;}
 	margin: 0;
 	padding: 20px 0 10px 0;
 	border-bottom: 1px dotted #CFCFCF;
-	text-transform: lowercase;
+	text-transform: none;
 	font-size: 24px;
 	font-weight: normal;
 }

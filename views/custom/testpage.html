@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+{{negpercent=response._vars['negmarks']
+  pos=response._vars['marks']
+  neg=pos*negpercent
+  tid=response._vars['tid']
+}}
+<link rel="stylesheet" type="text/css" href="{{=URL('static','css/testlist.css')}}">
+<div class="inst">
+	<h2>Instructions:</h2>
+	<hr>
+	<b> Please go through all the below instructions carefully before you attempt the test</b>
+	<ul>
+		<li>This Test contains <b>10 questions</b></li>
+		<li>This Test will be for <b>30 minutes</b></li>
+		<li>There will be 4 options and one of them will be correct</li>
+		<li>Each Question Carries <b>{{=pos}} marks </b></li>
+		<li>If your answer is wrong then the penalty will be <b> {{=neg}} marks </b></li>
+	</ul>
+</div>	
+
+<div class="testlist" >
+	<button id="starttest" onclick="location.href='{{=URL('custom','testStart',args=tid)}}'">Start Test</button>
+</div>	
+

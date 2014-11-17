@@ -39,7 +39,7 @@ def _():
     if auth.is_logged_in():
         response.menu+= [
         (T('Profile'), False, URL('custom','profile')),
-        (T('Tests'), False, URL('custom','tests')),
+        (T('Tests'), False, URL('custom','testlist')),
         (T('Statistics'), False, URL('custom','stats')
         )]  
         if auth.user.is_stud == False:

@@ -1,0 +1,15 @@
+{{extend 'layout.html'}}
+<link rel="stylesheet" type="text/css" href="{{=URL('static','css/testlist.css')}}">
+
+<div class="tlink">
+	<h2> {{=BEAUTIFY(response._vars['cat'])}}</h2>
+	<hr>
+	{{index=0}}
+	{{ for i in response._vars['names']:}}
+	{{=LABEL(index+1)}}
+	.
+	{{=A(i,_href=URL('custom','testpage',args=response._vars['ids'][index]))}}
+	{{=BR()}}
+	{{index=index+1}}
+	{{pass}}		
+</div>

@@ -5,7 +5,7 @@
 	LABEL('Category : '),SELECT('Aptitude','Verbal','OS','Database',_name="cat"),BR(),
 	LABEL('Marks per question : '),INPUT(_type='number',_name='marks',_required='true'),BR(),
 	LABEL('Negative Score: '),INPUT(_type='text', _name='negmarks', _placeholder='Between 0.0 and 1.0'),BR(),
-	LABEL('Import : '),INPUT(_type='file',_name='csvfile'),BR(),
+	LABEL('Import : '),INPUT(_type='file',_name='csvfile',_required='true'),BR(),
 	INPUT(_type='hidden',_value='dba.auth_user',_name='test'),
 	INPUT(_type='submit',_value='Upload'))
 }}

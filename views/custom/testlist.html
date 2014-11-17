@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+
+<link rel="stylesheet" type="text/css" href="{{=URL('static','css/testlist.css')}}">
+
+<div class="testlist">
+	<button onclick="location.href='{{=URL('custom','showTestList',args='Aptitude')}}'">Aptitude</button>
+	<button onclick="location.href='{{=URL('custom','showTestList',args='Verbal')}}'">Verbal</button>
+	<br>
+	<button onclick="location.href='{{=URL('custom','showTestList',args='OS')}}'">OS</button>
+	<button onclick="location.href='{{=URL('custom','showTestList',args='Database')}}'">Database</button>
+</div>
+

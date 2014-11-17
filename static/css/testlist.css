@@ -1,0 +1,56 @@
+
+.testlist{
+	padding-left: 21%;
+}
+.testlist button{
+	margin: 3%;
+	height: 100px;
+	width: 200px;
+	background: url("../images/buttonpat1.png");
+	font-family: Georgia, Serif;
+	color: white;
+	-webkit-box-shadow: #474747 0px 0px 5px ;
+	-moz-box-shadow: #474747 0px 0px 5px ;
+	 box-shadow: #474747 0px 0px 5px ;
+}
+
+.testlist button:hover{
+	margin: 3%;
+	height: 107px;
+	width: 210px;
+	background: url("../images/buttonpat1.png");
+	font-family: Georgia, Serif;
+	color: black;
+	-webkit-box-shadow: #474747 0px 0px 5px ;
+	-moz-box-shadow: #474747 0px 0px 5px ;
+	 box-shadow: #474747 0px 0px 5px ;
+}
+
+#starttest{
+	border-radius: 20%;
+	height: 45px;
+	width: 120px;
+	background: url("../images/buttonpat1.png");
+	font-family: Georgia, Serif;
+	-webkit-box-shadow: #474747 0px 0px 5px ;
+	-moz-box-shadow: #474747 0px 0px 5px ;
+	 box-shadow: #474747 0px 0px 5px ;
+}
+
+.tlink{
+	font-size: 13pt;
+	font-family: Georgia;
+}
+
+.tlink a{
+	text-decoration: none;
+
+}
+
+.tlink h2{
+	color: #0B610B;
+
+}
+.tlink a:hover{
+	color: black;
+}

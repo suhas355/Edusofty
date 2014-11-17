@@ -72,3 +72,41 @@ def upload():
 		response.flash = T('data uploaded')
 	return dict() 
 
+@auth.requires_login() 
+def dispList():	
+	ids=request.vars['ids']
+	names=request.vars['names']
+	cat=request.vars['cat']
+	return dict(ids=ids,names=names,cat=cat)
+
+@auth.requires_login() 
+def testlist():
+	return dict()
+
+@auth.requires_login() 
+def showTestList():
+	response.flash = T('click is on')
+	namelist=[]
+	idlist=[]
+	for row in db(db.testmap.category==request.args[0]).select():
+		idlist.append(row.id)
+		namelist.append(row.tname)
+	redirect(URL('custom','dispList',vars=dict(ids=idlist,names=namelist,cat=request.args[0])))
+
+@auth.requires_login() 
+def testpage():
+	#print request.args
+	row=db(db.testmap.id==request.args[0]).select().first()
+	return dict(tid=row.id,marks=row.score,negmarks=row.negative)
+
+@auth.requires_login() 
+def testStart():
+	print request.args
+	rows=db(db.question.tid==request.args[0]).select()
+	ques=[]
+	for row in rows:
+		ques.append([row.qno,row.ques,row.opt_a,row.opt_b,row.opt_c,row.opt_d,row.answer])
+	#to do
+	#1. select 10 random question
+	return dict(tid=request.args[0],ques=ques)
+
