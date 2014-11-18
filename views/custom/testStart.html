@@ -1,6 +1,38 @@
 {{extend 'layout.html'}}
 <link rel="stylesheet" type="text/css" href="{{=URL('static','css/testlist.css')}}">
-<h1>{{=BEAUTIFY(response._vars['tname'])}}</h1>
+<div id='thead'>
+	<div class="timer" id='countdown'>
+		<script>
+			jQuery(function(){jQuery('#content a').attr('target','_blank');});
+			String.prototype.format = function() {
+		    var formatted = this;
+		    for(arg in arguments) {
+		        if(arguments[arg]<=9)
+		           formatted = formatted.replace("{" + arg + "}", '0'+arguments[arg]);
+		        else
+		           formatted = formatted.replace("{" + arg + "}", arguments[arg]);
+		    }
+		    return formatted;
+			};
+			var t0 =1800;
+			countdown();
+			function countdown() {
+			  t1 = (t0>0)?t0:-t0;;
+			  var h = (t1/3600).toFixed(0);
+			  var m = ((t1/60) % 60).toFixed(0);
+			  var s = (t1 % 60);
+			  var dateStr = "{0}:{1}:{2}".format(h,m,s);
+			  if(t0<0) jQuery('#countdown').html('-'+dateStr).css('color','red');
+			  else if(t0<5*60 && t0 % 2==0) jQuery('#countdown').html(dateStr).css('color','black');
+			  else jQuery('#countdown').html(dateStr).css('color','green');
+			  t0 = t0 - 1;
+			  setTimeout ("countdown()", 1000);
+			}
+		</script>
+		
+	</div>
+	<h1 id="testname">{{=BEAUTIFY(response._vars['tname'])}}</h1>
+</div>
 <div class="outerTest">
 	<form action="{{=URL('custom','evaluate',args=response._vars['tid'])}}" method='post'>
 		{{qcount=1}}
@@ -14,7 +46,7 @@
 		  optD=que[5]
 		  ans=que[6]	
 		}}
-		{{divcontent= HR()+ LABEL(str(qcount)+'.') + B(LABEL(question))}}
+		{{divcontent= HR()+ LABEL(str(qcount)+'. ') + B(LABEL(question))}}
 		{{divcontent = divcontent + BR() + LABEL('A.') + INPUT(_type='radio',_class='qradio',_name=qlabel,_value=optA) + optA }}
 		{{divcontent = divcontent + BR() + LABEL('B.') + INPUT(_type='radio',_class='qradio',_name=qlabel,_value=optB) + optB}}
 		{{divcontent = divcontent + BR() + LABEL('C.') + INPUT(_type='radio',_class='qradio',_name=qlabel,_value=optC) + optC}}

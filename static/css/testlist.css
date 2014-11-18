@@ -36,6 +36,26 @@
 	-moz-box-shadow: #474747 0px 0px 5px ;
 	 box-shadow: #474747 0px 0px 5px ;
 }
+.outerTest{
+	font-size: 15px;
+}
+
+#thead h1{
+	width: 45%;
+}
+.timer{
+	float: right;
+	font-size: 20px;
+	font-weight: bolder;
+}
+
+.innerTest{
+	margin: 10px;
+}
+
+.qradio{
+	margin: 5px;
+}
 
 #testsubmit{
 	margin-left: 40%;

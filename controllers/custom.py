@@ -36,24 +36,14 @@ def insertTest(t_name,cat,marks,negmarks,csvlist):
 	except:
 		return False
 	q_no=1
-	print "-----------------------------"
 	for line in csvlist:
-		print q_no
-		print t_id
-		print q_no
-		print line[0]
-		print line[1]
-		print line[2]
-		print line[3]
-		print line[4]
-		print line[5]
-
 		db.question.insert(tid=t_id,qno=q_no,ques=line[0],opt_a=line[1],opt_b=line[2],opt_c=line[3],opt_d=line[4],answer=line[5])
-		print line
 		q_no=q_no+1		
 	return True
-		
-
+	
+@auth.requires_login()	
+def stats():
+	return dict()
 
 @auth.requires_login() 
 def upload():
@@ -101,7 +91,6 @@ def testpage():
 
 @auth.requires_login() 
 def testStart():
-	print request.args
 	rows=db(db.question.tid==request.args[0]).select()
 	tnamerow=db(db.testmap.id==request.args[0]).select(db.testmap.tname).first()
 	tname=tnamerow['tname']
