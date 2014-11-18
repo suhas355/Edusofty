@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+{{score=response._vars['score']
+max=10 * response._vars['perques']
+percentage = 0 if score <=0 else (score * 100 / ( max ))
+}}
+{{import time}}
+<link rel="stylesheet" type="text/css" href="{{=URL('static','css/certificate.css')}}">
+<link href='http://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
+<div id="certificate">
+<h1><u>Certificate</u></h1>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This is to certify that on {{=time.strftime("%d/%m/%Y")}} <h2>"{{=auth.user.first_name}} {{=auth.user.last_name}}" </h2> </p><p> has scored <b><i>"{{=percentage}}"</i></b> in {{=response._vars['tname']}}  by scoring <b><i>"{{=score}}"</i></b>out of {{=max}} marks</p>
+</div>

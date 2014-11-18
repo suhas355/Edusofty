@@ -1,0 +1,28 @@
+#page-bottom {
+	background: url("../images/certificate.jpg");
+	background-size: 100%;
+	min-height: 340pt;
+	
+}
+
+#certificate{
+	font-family: 'Playball', cursive;
+	margin-left: 38%;
+	font-size: 14pt;
+}
+
+#certificate h1{
+	margin-left: 40%;
+	color: #0B610B;
+	text-shadow: 2px 2px #2E2E2E;
+
+}
+
+#certificate p{
+	margin-left: 25%;
+}
+
+#certificate h2{
+	margin-left: 40%;
+	color: #0B610B;
+}

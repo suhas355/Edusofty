@@ -101,3 +101,22 @@ def testStart():
 	#1. select 10 random question
 	return dict(tid=request.args[0],ques=ques,tname=tname)
 
+@auth.requires_login() 
+def evaluate():	
+	tid=request.args[0]
+	marks=db(db.testmap.id==tid).select().first()
+	pos=marks.score
+	neg=marks.negative
+	score=0
+	tname=db(db.testmap.id==tid).select(db.testmap.tname).first()
+	print tname['tname']
+	for qno in request.vars:
+		if qno == 'submit':
+			continue
+		ans=db((db.question.tid==tid) & (db.question.qno==qno)).select(db.question.answer).first()
+
+		if ans['answer']==request.vars[qno]:
+			score=score+pos
+		else:
+			score=score-neg
+	return dict(score=score,perques=pos,tname= tname['tname'])
