@@ -51,7 +51,7 @@ def stats():
 		# percent = []
 		# rows = db(db.stat.uid==auth.user.id).select(db.testmap.id,db.testmap.tname)
 		
-		# return dict()
+		return dict(tlist=[],scount=[])
 	else:
 		tname =[]
 		stud_taken= []
@@ -107,6 +107,10 @@ def testpage():
 	row=db(db.testmap.id==request.args[0]).select().first()
 	return dict(tid=row.id,marks=row.score,negmarks=row.negative)
 
+def getRandomList():
+	qlist=[]
+
+
 @auth.requires_login() 
 def testStart():
 	rows=db(db.question.tid==request.args[0]).select()
@@ -115,9 +119,22 @@ def testStart():
 	ques=[]
 	for row in rows:
 		ques.append([row.qno,row.ques,row.opt_a,row.opt_b,row.opt_c,row.opt_d,row.answer])
-	#to do
-	#1. select 10 random question
-	return dict(tid=request.args[0],ques=ques,tname=tname)
+
+	qcount = len(ques)
+	maxques = min(10,qcount)
+	if qcount == maxques:
+		return dict(tid=request.args[0],ques=ques,tname=tname)
+	qlist=[]
+	qno =[]
+	from random import randint
+	while len(qno) != maxques:
+		num = randint(1,qcount-1)
+		present = True if num in qno else False
+		if present == False:
+			qlist.append(ques[num])
+			qno.append(num)
+	
+	return dict(tid=request.args[0],ques=qlist,tname=tname)
 
 @auth.requires_login() 
 def evaluate():	

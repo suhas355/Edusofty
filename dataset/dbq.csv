@@ -1,0 +1,15 @@
+A report generator is used to,update files,print files on paper,data entry,All of the above,B
+Which of the following is not a logical data-base structure?,  tree,relational,network,All of the above,D
+Which of the following is a database administrator's function?  ,database design,backing up the database,user coordination,All of the above,D
+Primitive operations common to all record management systems include,Look-up,Sort,Print,None,A
+Each of data files has a _____ that describe the way the data is stored in the file.,File structure,Records,Fields,Database,A
+"After you _____ a record, many data management the environments require you to issue a command to save the changes you made.",Delete,Update ,Sort Key,Index,B
+What is the language used by most of the DBMSs for helping their users to access data?,High level language,Query language,SQL,4GL,B
+Data item characteristics that are important in data management include,punctuation,language,spelling,width,D
+"In SQL, which command is used to make permanent changes made by statements issue since the beginning of a transaction?",ZIP,PACK,COMMIT,SAVE,C
+"Periodically adding, changing and deleting file records is called file",Updating,upgrading,restructuring,renewing,A
+Sort/report generators,are faster than index/report generators,require more disk space than index/report generators,do not need to sort before generating a report,both (a) and (b),B
+"In SQL, which command(s) is(are) used to enable/disable a database trigger?",MODIFY USER,CHANGE USER,ALTER TRIGGER,  None of the above,C
+"If the record management system allows you to edit values before they are recorded on disk, you can",correct spelling changes before they are recorded,change the name of a field,change the width of a field,All of the above,A
+The relational model uses some unfamiliar terminology. A tuple is equivalent to a:,record,Field,File,Database,A
+The files stored on a secondary stage device are composed of a hierarchy of data. What does a record in a file contain?,Bits,Characters,Data Field,Schema,C
