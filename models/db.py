@@ -43,7 +43,7 @@ service = Service()
 plugins = PluginManager()
 
 auth.settings.extra_fields['auth_user']= [
-Field('is_stud','boolean'),
+Field('is_stud','boolean',comment='Do not check this box if you are a teacher'),
 Field('dob','date')
 ]
 

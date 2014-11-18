@@ -7,7 +7,7 @@ def home():
     return dict(message='hello from internal home')
 
 @auth.requires_login()
-def profile():
+def profile():	
     redirect(URL('default','user',args='profile'))
 
 @auth.requires_login() 
