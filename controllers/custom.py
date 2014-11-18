@@ -20,6 +20,7 @@ def validate(csvfile):
 	csvlist = csvfile.value.split('\n')
 	tcsv = csv.reader(csvlist,skipinitialspace=True)
 	flist = []
+
 	for i in tcsv:
 		if len(i) != 6:
 			return False
@@ -27,6 +28,8 @@ def validate(csvfile):
 			return False
 
 		flist.append(i)
+	if len(flist) < 10 :
+		return False
 	return flist
 
 def insertTest(t_name,cat,marks,negmarks,csvlist):
@@ -43,7 +46,22 @@ def insertTest(t_name,cat,marks,negmarks,csvlist):
 	
 @auth.requires_login()	
 def stats():
-	return dict()
+	if auth.user.is_stud==True:
+		# tname =[]
+		# percent = []
+		# rows = db(db.stat.uid==auth.user.id).select(db.testmap.id,db.testmap.tname)
+		
+		# return dict()
+	else:
+		tname =[]
+		stud_taken= []
+		rows = db(db.testmap.uid==auth.user.id).select(db.testmap.id,db.testmap.tname)
+		for row in rows:
+			tname.append(row.tname)
+			studs = db(db.stat.tid==row.id).count()
+			stud_taken.append(studs)
+
+		return dict(tlist = tname,scount = stud_taken)
 
 @auth.requires_login() 
 def upload():
@@ -109,7 +127,6 @@ def evaluate():
 	neg=marks.negative
 	score=0
 	tname=db(db.testmap.id==tid).select(db.testmap.tname).first()
-	print tname['tname']
 	for qno in request.vars:
 		if qno == 'submit':
 			continue
@@ -119,4 +136,11 @@ def evaluate():
 			score=score+pos
 		else:
 			score=score-neg
+
+	#Insert obtained score in stat table
+	maxscore = pos*10
+	import sqlite3
+	from datetime import datetime
+	now = datetime.now()
+	db.stat.insert(stud_id=auth.user.id,tid = tid,score=score,maxscore=maxscore,timestamp=now)
 	return dict(score=score,perques=pos,tname= tname['tname'])

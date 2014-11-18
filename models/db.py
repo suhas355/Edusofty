@@ -53,9 +53,9 @@ auth.define_tables(username=True, signature=False)
 
 ## configure email
 mail = auth.settings.mailer
-mail.settings.server = 'logging' if request.is_local else 'smtp.gmail.com:587'
-mail.settings.sender = 'you@gmail.com'
-mail.settings.login = 'username:password'
+mail.settings.server = 'smtp.gmail.com:25'
+mail.settings.sender = 'ks.suhas355@gmail.com'
+mail.settings.login = 'ks.suhas355:govinda355@'
 
 ## configure auth policy
 auth.settings.registration_requires_verification = False
@@ -112,3 +112,12 @@ db.define_table('question',
                 migrate=True,
                 primarykey=['tid','qno']
                 )
+
+db.define_table('stat',
+    Field('stud_id',db.auth_user, notnull=True),
+    Field('tid',db.testmap, notnull=True),
+    Field('score','double'),
+    Field('maxscore','double'),
+    Field('timestamp','datetime'),
+    primarykey = ['stud_id','timestamp']
+    )

@@ -1,3 +1,37 @@
 {{extend 'layout.html'}}
-<h1>This is the custom/stats.html template</h1>
-{{=BEAUTIFY(response._vars)}}
+<head>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type='text/javascript'>
+	google.load('visualization', '1.0', {'packages':['corechart']});
+	google.setOnLoadCallback(drawChart);
+
+	
+	function drawChart() {
+		
+		{{print response._vars['tlist']}}
+		{{import json}}
+		var tests = {{=XML(response.json(response._vars['tlist']))}};
+		var count = {{=XML(response.json(response._vars['scount']))}};
+
+		var dataArray = [['Tests','Students Taken']];
+		for(var i=0;i< tests.length;i++){
+				dataArray.push([tests[i],count[i]])
+			}
+
+		var data = new google.visualization.arrayToDataTable(dataArray);
+		
+		var options = {
+		    title: 'Test taken',
+		    hAxis: {title: 'Student Count', titleTextStyle: {color: 'green'}}
+		};
+		var chart = new google.visualization.ColumnChart(document.getElementById('statdiv'));
+
+		chart.draw(data, options);
+
+	}
+	
+</script>
+</head>
+<div id = 'statdiv'>
+
+</div>
