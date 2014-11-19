@@ -4,7 +4,6 @@
 <script type='text/javascript'>
 	google.load('visualization', '1.0', {'packages':['corechart']});
 	google.setOnLoadCallback(drawChart);
-
 	
 	function drawChart() {
 		
@@ -13,7 +12,7 @@
 		var tests = {{=XML(response.json(response._vars['tlist']))}};
 		var count = {{=XML(response.json(response._vars['scount']))}};
 
-		var dataArray = [['Tests','Students Taken']];
+		var dataArray = [["{{=response._vars['xvalue']}}","{{=response._vars['yvalue']}}"]];
 		for(var i=0;i< tests.length;i++){
 				dataArray.push([tests[i],count[i]])
 			}

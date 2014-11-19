@@ -47,21 +47,30 @@ def insertTest(t_name,cat,marks,negmarks,csvlist):
 @auth.requires_login()	
 def stats():
 	if auth.user.is_stud==True:
-		# tname =[]
-		# percent = []
-		# rows = db(db.stat.uid==auth.user.id).select(db.testmap.id,db.testmap.tname)
+		tname=[]
+		percent = []
+		rows = db(db.stat.stud_id==auth.user.id).select()
+		for row in rows:
+			per=(row.score / row.maxscore * 100 )
+			percent.append(per)
+			tnameTuple=db(db.testmap.id==row.tid).select(db.testmap.tname).first()
+			tname.append(tnameTuple['tname'])
 		
+<<<<<<< Updated upstream
 		return dict(tlist=[],scount=[])
+=======
+		return dict(tlist = tname,scount = percent,xvalue='tests taken',yvalue='percentage',unit='score in %')
+>>>>>>> Stashed changes
 	else:
 		tname =[]
-		stud_taken= []
+		stud_taken=[]
 		rows = db(db.testmap.uid==auth.user.id).select(db.testmap.id,db.testmap.tname)
 		for row in rows:
 			tname.append(row.tname)
 			studs = db(db.stat.tid==row.id).count()
 			stud_taken.append(studs)
 
-		return dict(tlist = tname,scount = stud_taken)
+		return dict(tlist = tname,scount = stud_taken,xvalue='tests uploaded',yvalue='No of students taken',unit='No of students')
 
 @auth.requires_login() 
 def upload():
@@ -85,6 +94,9 @@ def dispList():
 	ids=request.vars['ids']
 	names=request.vars['names']
 	cat=request.vars['cat']
+	print ids
+	print names
+	print cat
 	return dict(ids=ids,names=names,cat=cat)
 
 @auth.requires_login() 
