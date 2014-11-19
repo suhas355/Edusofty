@@ -56,11 +56,7 @@ def stats():
 			tnameTuple=db(db.testmap.id==row.tid).select(db.testmap.tname).first()
 			tname.append(tnameTuple['tname'])
 		
-<<<<<<< Updated upstream
-		return dict(tlist=[],scount=[])
-=======
 		return dict(tlist = tname,scount = percent,xvalue='tests taken',yvalue='percentage',unit='score in %')
->>>>>>> Stashed changes
 	else:
 		tname =[]
 		stud_taken=[]
@@ -91,12 +87,14 @@ def upload():
 
 @auth.requires_login() 
 def dispList():	
-	ids=request.vars['ids']
-	names=request.vars['names']
+	ids=[]
+	names=[]
 	cat=request.vars['cat']
-	print ids
-	print names
-	print cat
+	if not request.vars['ids'] is None:
+		ids.append(request.vars['ids'])
+		names.append(request.vars['names'])
+	else:
+		return dict(ids=None,names=None,cat=cat)	
 	return dict(ids=ids,names=names,cat=cat)
 
 @auth.requires_login() 

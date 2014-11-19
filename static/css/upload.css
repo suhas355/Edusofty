@@ -1,0 +1,17 @@
+#uploadform{
+	margin: 10pt;
+}
+
+input{
+	position: absolute;
+	left: 352px;
+}
+
+select{
+	position: absolute;
+	left: 352px;
+}
+
+label{
+	min-width: 50pt;
+}

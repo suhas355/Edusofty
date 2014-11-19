@@ -1,14 +1,28 @@
 {{extend 'layout.html'}}
-
-{{=FORM(B(T('Import ')),BR(),
+<link rel="stylesheet" type="text/css" href="{{=URL('static','css/upload.css')}}">
+<div id="uploadform">
+<h2>Upload</h2>	
+{{=FORM(BR(),
 	LABEL('Test Name : '),INPUT(_type='text',_name='tname',_required='true'),BR(),
 	LABEL('Category : '),SELECT('Aptitude','Verbal','OS','Database',_name="cat"),BR(),
 	LABEL('Marks per question : '),INPUT(_type='number',_name='marks',_required='true'),BR(),
 	LABEL('Negative Score: '),INPUT(_type='text', _name='negmarks', _placeholder='Between 0.0 and 1.0'),BR(),
 	LABEL('Import : '),INPUT(_type='file',_name='csvfile',_required='true'),BR(),
-	INPUT(_type='hidden',_value='dba.auth_user',_name='test'),
+	INPUT(_type='hidden',_value='dba.auth_user',_name='test'),BR(),
 	INPUT(_type='submit',_value='Upload'))
 }}
-
-
-{{=BEAUTIFY(response._vars)}}
+<br>
+</div>
+<div class="inst">
+	<h3>Instructions:</h3>
+	<hr>
+	<b> Please go through all the below instructions carefully before you upload the test</b>
+	<ul>
+		<li>Upload file should be in <b>csv</b> format</li>
+		<li>Each row should represent a question:  
+		 <br><b>sample:</b> <i> question,optionA,optionB,optionC,optionD,Answer</i>
+		 <br><b>Example:</b> <i> which is the Capital of India?,Delhi,Bengaluru,Chennai,Mumbai,D</i>
+		</li>
+		<li>There should be atleast ten questions</li>
+	</ul>
+</div>	
